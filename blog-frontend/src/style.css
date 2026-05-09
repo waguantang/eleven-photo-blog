@@ -1,0 +1,527 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Noto+Sans+SC:wght@300;400;700&family=Noto+Serif+SC:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+@theme {
+  --font-display: 'Yusei Magic', cursive;
+  --font-body: 'Noto Serif SC', 'SimSun', serif;
+  --font-sans: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  --font-mono: 'Courier Prime', 'Courier New', monospace;
+}
+
+/* ═══════════════════════════════════════════
+   MANGA GARAGE — Light Mode (Manga Paper)
+   ═══════════════════════════════════════════ */
+:root {
+  --bg-primary: #F9F6F0;
+  --bg-secondary: #F0EBE0;
+  --bg-card: #FEFCF8;
+  --text-primary: #1A1714;
+  --text-secondary: #6B6358;
+  --ink: #1A1714;
+  --ink-light: #8B8378;
+  --border: #33302B;
+  --border-light: #D4CFC5;
+
+  /* Character accent colors */
+  --bocchi-pink: #E87DA6;
+  --nijika-yellow: #F5C344;
+  --ryo-blue: #5B8DB8;
+  --kita-red: #E85D5D;
+
+  --accent: var(--bocchi-pink);
+  --accent-glow: #F0A0C0;
+  --accent-blue: var(--ryo-blue);
+  --accent-gold: var(--nijika-yellow);
+
+  /* Manga effects */
+  --halftone-opacity: 0.04;
+  --speedline-opacity: 0.06;
+  --panel-gap: 3px;
+  --panel-border: 2px solid var(--ink);
+
+  /* Backward compat */
+  --accent-pink: #E87DA6;
+  --accent-yellow: #F5C344;
+  --accent-yellow-light: #FFF8E1;
+  --accent-red: #E85D5D;
+  --stamp-ink: #1A1714;
+  --tape: rgba(255,255,200,0.4);
+  --border-color: #33302B;
+}
+
+/* ═══════════════════════════════════════════
+   MANGA GARAGE — Dark Mode (Ink Wash Night)
+   ═══════════════════════════════════════════ */
+.dark {
+  --bg-primary: #12100E;
+  --bg-secondary: #1D1A16;
+  --bg-card: #25211C;
+  --text-primary: #E8E2D8;
+  --text-secondary: #9D9488;
+  --ink: #E8E2D8;
+  --ink-light: #6B6054;
+  --border: #3D3830;
+  --border-light: #2D2924;
+
+  --bocchi-pink: #F0A0C0;
+  --nijika-yellow: #F8D878;
+  --ryo-blue: #7BB3D4;
+  --kita-red: #F08080;
+
+  --accent: var(--bocchi-pink);
+  --accent-glow: #F0A0C0;
+  --accent-blue: var(--ryo-blue);
+  --accent-gold: var(--nijika-yellow);
+
+  --halftone-opacity: 0.06;
+  --speedline-opacity: 0.08;
+  --panel-border: 2px solid var(--border);
+
+  --accent-pink: #F0A0C0;
+  --accent-yellow: #F8D878;
+  --accent-yellow-light: #2D2820;
+  --accent-red: #F08080;
+  --stamp-ink: #E8E2D8;
+  --tape: rgba(255,255,180,0.08);
+  --border-color: #3D3830;
+}
+
+/* ═══════════════════════════════════════════
+   BASE
+   ═══════════════════════════════════════════ */
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  transition: background-color 0.4s, color 0.4s;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════
+   HALFTONE DOT OVERLAY
+   ═══════════════════════════════════════════ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--halftone-opacity);
+  background-image:
+    radial-gradient(circle, var(--ink) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* ═══════════════════════════════════════════
+   SCROLLBAR — Thin ink line
+   ═══════════════════════════════════════════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb {
+  background: var(--ink-light);
+  border-radius: 0;
+}
+
+/* ═══════════════════════════════════════════
+   SELECTION — Manga highlight
+   ═══════════════════════════════════════════ */
+::selection {
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+  color: var(--text-primary);
+}
+
+/* ═══════════════════════════════════════════
+   STAMP — Red ink seal
+   ═══════════════════════════════════════════ */
+.stamp {
+  display: inline-block;
+  padding: 0.2em 0.7em;
+  border: 2px solid var(--stamp-ink);
+  color: var(--stamp-ink);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  transform: rotate(-2deg);
+  text-transform: uppercase;
+  position: relative;
+  user-select: none;
+}
+
+/* ═══════════════════════════════════════════
+   MANGA PANEL — Posts & cards
+   ═══════════════════════════════════════════ */
+.manga-panel {
+  position: relative;
+  background: var(--bg-card);
+  border: var(--panel-border);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.manga-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.12);
+}
+
+/* ═══════════════════════════════════════════
+   SPEECH BUBBLE — Comments
+   ═══════════════════════════════════════════ */
+.speech-bubble {
+  position: relative;
+  background: var(--bg-card);
+  border: 2px solid var(--ink);
+  border-radius: 18px 18px 18px 4px;
+  padding: 1rem 1.25rem;
+}
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -12px;
+  width: 14px;
+  height: 14px;
+  background: var(--bg-card);
+  border-left: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+/* ═══════════════════════════════════════════
+   SCREAM BUBBLE — Jagged manga shout
+   ═══════════════════════════════════════════ */
+.scream-bubble {
+  position: relative;
+  background: var(--bg-card);
+  border: 2px solid var(--ink);
+  padding: 1rem 1.25rem;
+  clip-path: polygon(
+    0% 8%, 3% 0%, 12% 6%, 22% 0%, 28% 8%,
+    38% 2%, 44% 10%, 56% 4%, 62% 12%,
+    72% 5%, 78% 12%, 88% 4%, 95% 10%,
+    100% 5%, 100% 92%, 97% 100%, 88% 94%,
+    78% 100%, 72% 92%, 62% 100%, 56% 90%,
+    44% 98%, 38% 88%, 28% 100%, 22% 92%,
+    12% 98%, 3% 90%, 0% 100%
+  );
+}
+
+/* ═══════════════════════════════════════════
+   SPEED LINES — Action dividers
+   ═══════════════════════════════════════════ */
+.speed-lines {
+  position: relative;
+  height: 40px;
+  overflow: hidden;
+  opacity: var(--speedline-opacity);
+}
+.speed-lines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    105deg,
+    transparent,
+    transparent 2px,
+    var(--ink) 2px,
+    var(--ink) 3px,
+    transparent 3px,
+    transparent 6px
+  );
+}
+
+/* ═══════════════════════════════════════════
+   INK BRUSH STROKE — Decorative
+   ═══════════════════════════════════════════ */
+.ink-stroke {
+  position: relative;
+}
+.ink-stroke::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin-top: 0.5rem;
+  background: var(--ink);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+}
+
+/* ═══════════════════════════════════════════
+   ACTION LINES BG — Radiating focus lines
+   ═══════════════════════════════════════════ */
+.action-lines-bg {
+  background-image:
+    conic-gradient(
+      from 0deg at 50% 40%,
+      transparent 0deg,
+      transparent 2deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 2deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 3deg,
+      transparent 3deg,
+      transparent 5deg,
+      transparent 10deg,
+      transparent 12deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 12deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 13deg,
+      transparent 13deg,
+      transparent 15deg,
+      transparent 30deg,
+      transparent 32deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 32deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 33deg,
+      transparent 33deg,
+      transparent 35deg,
+      transparent 50deg,
+      transparent 52deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 52deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 53deg,
+      transparent 53deg,
+      transparent 55deg,
+      transparent 90deg,
+      transparent 92deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 92deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 93deg,
+      transparent 93deg,
+      transparent 95deg,
+      transparent 120deg,
+      transparent 122deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 122deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 123deg,
+      transparent 123deg,
+      transparent 125deg,
+      transparent 150deg,
+      transparent 152deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 152deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 153deg,
+      transparent 153deg,
+      transparent 155deg,
+      transparent 210deg,
+      transparent 212deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 212deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 213deg,
+      transparent 213deg,
+      transparent 215deg,
+      transparent 240deg,
+      transparent 242deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 242deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 243deg,
+      transparent 243deg,
+      transparent 245deg,
+      transparent 270deg,
+      transparent 272deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 272deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 273deg,
+      transparent 273deg,
+      transparent 275deg,
+      transparent 300deg,
+      transparent 302deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 302deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 303deg,
+      transparent 303deg,
+      transparent 305deg,
+      transparent 330deg,
+      transparent 332deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 332deg,
+      color-mix(in srgb, var(--ink) 5%, transparent) 333deg,
+      transparent 333deg,
+      transparent 335deg,
+      transparent 360deg
+    );
+}
+
+/* ═══════════════════════════════════════════
+   MANGA PANEL GRID — Gutters between panels
+   ═══════════════════════════════════════════ */
+.manga-grid {
+  display: grid;
+  gap: 3px;
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  padding: 0;
+}
+
+/* ═══════════════════════════════════════════
+   CHARACTER TAG — Colored accent label
+   ═══════════════════════════════════════════ */
+.char-tag {
+  display: inline-block;
+  padding: 0.15em 0.6em;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  border: 2px solid var(--ink);
+  background: var(--bg-card);
+}
+
+/* ═══════════════════════════════════════════
+   HERO OVERLAY GRADIENT
+   ═══════════════════════════════════════════ */
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.4) 50%,
+    rgba(0,0,0,0.85) 100%
+  );
+}
+
+/* ═══════════════════════════════════════════
+   SFX TEXT — Manga sound effect style
+   ═══════════════════════════════════════════ */
+.sfx-text {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+  writing-mode: vertical-rl;
+}
+
+/* ═══════════════════════════════════════════
+   FOCUS LINES — Converging lines for emphasis
+   ═══════════════════════════════════════════ */
+.focus-lines {
+  position: relative;
+}
+.focus-lines::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    transparent 3deg,
+    color-mix(in srgb, var(--ink) 8%, transparent) 3deg,
+    color-mix(in srgb, var(--ink) 8%, transparent) 4deg,
+    transparent 4deg,
+    transparent 8deg
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════
+   PROSE — Markdown article content
+   ═══════════════════════════════════════════ */
+.bocchi-prose h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  border-bottom: 3px double var(--ink);
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+.bocchi-prose h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--ryo-blue);
+}
+.bocchi-prose blockquote {
+  border-left: none;
+  background: var(--bg-secondary);
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  position: relative;
+  border: 2px solid var(--border-light);
+}
+.bocchi-prose blockquote::before {
+  content: '\201C';
+  position: absolute;
+  left: 0.3rem;
+  top: -0.6rem;
+  font-size: 3rem;
+  font-family: var(--font-display);
+  color: var(--accent);
+  opacity: 0.4;
+}
+.bocchi-prose a {
+  color: var(--ryo-blue);
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+.bocchi-prose code {
+  background: var(--bg-secondary);
+  color: var(--kita-red);
+  padding: 0.1em 0.4em;
+  border-radius: 2px;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+}
+.bocchi-prose pre {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  border: 2px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.bocchi-prose img {
+  width: 100%;
+  border: 3px solid var(--ink);
+}
+.bocchi-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid var(--ink);
+}
+.bocchi-prose th {
+  background: var(--bg-secondary);
+  font-family: var(--font-display);
+  font-weight: 400;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--ink);
+  text-align: left;
+}
+.bocchi-prose td {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--ink);
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════ */
+@keyframes panel-appear {
+  0%   { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes stamp-down {
+  0%   { transform: scale(1.8); opacity: 0; }
+  60%  { transform: scale(0.95); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@keyframes speed-lines-scroll {
+  0%   { background-position: 0 0; }
+  100% { background-position: 20px 0; }
+}
+
+@keyframes text-reveal {
+  0%   { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 4px var(--accent-glow)); }
+  50%      { filter: drop-shadow(0 0 12px var(--accent-glow)); }
+}
+
+.panel-animate {
+  animation: panel-appear 0.5s ease-out both;
+}

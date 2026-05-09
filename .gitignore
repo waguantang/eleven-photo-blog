@@ -1,0 +1,32 @@
+# ── Dependencies ──
+node_modules/
+.mvn/
+
+# ── Build output ──
+blog-frontend/dist/
+blog-backend/target/
+*.class
+
+# ── IDE ──
+.idea/
+*.iml
+.vscode/
+
+# ── OS ──
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ── Environment ──
+.env
+.env.local
+.env.*.local
+
+# ── Logs ──
+*.log
+logs/
+
+# ── Misc ──
+*.swp
+*.swo
+*~
