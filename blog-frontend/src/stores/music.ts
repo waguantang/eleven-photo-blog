@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { Howl } from 'howler'
+import { trackApi, type Track as ApiTrack } from '../api/track'
 
 interface Track {
   id: string
@@ -10,6 +11,13 @@ interface Track {
   cover?: string
   duration?: number
 }
+
+const fallbackPlaylist: Track[] = [
+  { id: '1', title: '安静的午后', artist: 'Lofi Study', url: '' },
+  { id: '2', title: '咖啡馆小调', artist: 'Jazz Cafe', url: '' },
+  { id: '3', title: '阳光下的街道', artist: 'Acoustic Vibes', url: '' },
+  { id: '4', title: '黄昏时分', artist: 'Chill Evening', url: '' },
+]
 
 export const useMusicStore = defineStore('music', () => {
   const playlist = ref<Track[]>([])
@@ -34,14 +42,21 @@ export const useMusicStore = defineStore('music', () => {
     return (currentTime.value / duration.value) * 100
   })
 
-  function loadPlaylist() {
-    // 轻松的摄影背景音乐
-    playlist.value = [
-      { id: '1', title: '安静的午后', artist: 'Lofi Study', url: '' },
-      { id: '2', title: '咖啡馆小调', artist: 'Jazz Cafe', url: '' },
-      { id: '3', title: '阳光下的街道', artist: 'Acoustic Vibes', url: '' },
-      { id: '4', title: '黄昏时分', artist: 'Chill Evening', url: '' },
-    ]
+  async function loadPlaylist() {
+    try {
+      const res = await trackApi.list()
+      const tracks: ApiTrack[] = res.data.data
+      playlist.value = tracks.map(t => ({
+        id: String(t.id),
+        title: t.title,
+        artist: t.artist || '',
+        url: t.url || '',
+        cover: t.cover,
+        duration: t.duration,
+      }))
+    } catch {
+      playlist.value = [...fallbackPlaylist]
+    }
   }
 
   function play(index: number) {
@@ -120,6 +135,19 @@ export const useMusicStore = defineStore('music', () => {
   }
 
   loadPlaylist()
+
+  // Async fetch from API, replacing fallback on success
+  trackApi.list().then(res => {
+    const tracks: ApiTrack[] = res.data.data
+    playlist.value = tracks.map(t => ({
+      id: String(t.id),
+      title: t.title,
+      artist: t.artist || '',
+      url: t.url || '',
+      cover: t.cover,
+      duration: t.duration,
+    }))
+  }).catch(() => {})
 
   return {
     playlist, currentIndex, isPlaying, isExpanded, currentTime, duration, volume, progress,

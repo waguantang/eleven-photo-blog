@@ -51,13 +51,7 @@ watch(() => route.params.slug, load)
     </div>
 
     <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div
-        v-for="(post, i) in posts" :key="post.id"
-        :style="{
-          transform: `rotate(${i % 3 === 0 ? -0.5 : i % 3 === 1 ? 0.7 : -0.4}deg)`,
-          animation: `card-drop 0.4s ease-out ${i * 0.06}s both`,
-        }"
-      >
+      <div v-for="post in posts" :key="post.id" v-motion>
         <PostCard :post="post" />
       </div>
     </div>

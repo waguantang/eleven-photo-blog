@@ -23,5 +23,5 @@ const html = md.render(props.content)
 </script>
 
 <template>
-  <div class="bocchi-prose" v-html="html" />
+  <div class="article-prose" v-html="html" />
 </template>

@@ -42,7 +42,7 @@ onMounted(async () => {
       <!-- Month stamp -->
       <div class="text-center mb-6 relative z-10">
         <span class="inline-block px-3 py-1 text-sm"
-              style="font-family: var(--font-mono); color: var(--accent); font-size: 0.7rem; border: 2px solid var(--accent);">
+              style="font-family: var(--font-mono); font-size: 0.7rem; background: var(--accent); color: white;">
           {{ month }}
         </span>
       </div>
@@ -55,7 +55,7 @@ onMounted(async () => {
               <span class="text-xs" style="font-family: var(--font-mono); color: var(--text-secondary); font-size: 0.6rem;">
                 {{ new Date(post.publishedAt || post.createdAt).toLocaleDateString('zh-CN') }}
               </span>
-              <h3 class="text-base mt-1 transition-colors line-clamp-1 group-hover:text-red-700"
+              <h3 class="text-base mt-1 transition-colors line-clamp-1 group-hover:text-blue-600"
                   style="font-family: var(--font-display); color: var(--text-primary); font-size: 0.95rem; font-weight: 400;">
                 {{ post.title }}
               </h3>

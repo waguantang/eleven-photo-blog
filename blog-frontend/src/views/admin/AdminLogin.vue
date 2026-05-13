@@ -46,7 +46,7 @@ async function login() {
                style="border-color: var(--border-color); background-color: var(--bg-secondary); color: var(--text-primary)" />
         <p v-if="error" class="text-xs" style="color: var(--accent-red)">{{ error }}</p>
         <button type="submit" :disabled="loading" class="w-full py-2.5 rounded-lg text-sm font-bold text-white transition-all hover:scale-105 disabled:opacity-50"
-                style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-yellow))">
+                style="background: var(--accent)">
           {{ loading ? '请稍候...' : '进入后台' }}
         </button>
       </form>

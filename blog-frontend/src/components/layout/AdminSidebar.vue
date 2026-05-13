@@ -6,9 +6,12 @@ const route = useRoute()
 const menu = [
   { to: '/admin', label: '仪表盘', icon: '📊' },
   { to: '/admin/posts', label: '文章管理', icon: '📝' },
+  { to: '/admin/photos', label: '作品管理', icon: '📷' },
+  { to: '/admin/tracks', label: '音乐管理', icon: '🎵' },
   { to: '/admin/comments', label: '评论管理', icon: '💬' },
   { to: '/admin/categories', label: '分类管理', icon: '📁' },
   { to: '/admin/tags', label: '标签管理', icon: '🏷' },
+  { to: '/admin/config', label: '站点配置', icon: '⚙' },
 ]
 </script>
 

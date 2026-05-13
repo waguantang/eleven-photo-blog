@@ -14,9 +14,9 @@ const date = computed(() => {
   <RouterLink :to="`/post/${post.slug}`" class="block no-underline" style="color: inherit">
     <div class="relative group cursor-pointer max-w-4xl mx-auto">
       <!-- Manga panel frame -->
-      <div class="relative manga-panel overflow-hidden">
+      <div class="relative card-panel overflow-hidden">
         <!-- Image area with cinematic aspect ratio -->
-        <div class="relative overflow-hidden" style="aspect-ratio: 16/7; border-bottom: 3px solid var(--ink);">
+        <div class="relative overflow-hidden" style="aspect-ratio: 16/7; border-bottom: 1px solid var(--border);">
           <img
             v-if="post.coverImage"
             :src="post.coverImage" :alt="post.title"
@@ -33,12 +33,12 @@ const date = computed(() => {
                 {{ date }}
               </span>
               <span v-if="post.category" class="text-xs px-2 py-0.5 text-white"
-                    style="font-family: var(--font-display); font-size: 0.6rem; background: var(--kita-red);">
+                    style="font-family: var(--font-display); font-size: 0.6rem; background: var(--accent);">
                 {{ post.category.name }}
               </span>
             </div>
             <h2 class="text-2xl md:text-3xl font-bold leading-tight text-white"
-                style="font-family: var(--font-display); font-weight: 400; text-shadow: 2px 2px 0 rgba(0,0,0,0.5);">
+                style="font-family: var(--font-display); font-weight: 400;">
               {{ post.title }}
             </h2>
             <p v-if="post.excerpt" class="mt-2 text-sm text-white/80 line-clamp-1"
@@ -49,9 +49,9 @@ const date = computed(() => {
         </div>
       </div>
 
-      <!-- "NEW" burst (manga-style) -->
+      <!-- "NEW" badge -->
       <div class="absolute -top-2 -right-2 pointer-events-none"
-           style="font-family: var(--font-display); font-size: 0.7rem; background: var(--kita-red); color: #fff; padding: 6px 10px; transform: rotate(6deg); border: 2px solid var(--ink); box-shadow: 2px 2px 0 rgba(0,0,0,0.2);">
+           style="font-family: var(--font-display); font-size: 0.7rem; background: var(--accent); color: #fff; padding: 6px 10px; border-radius: 999px;">
         NEW!
       </div>
     </div>

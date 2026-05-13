@@ -51,7 +51,7 @@ onMounted(async () => {
 
     <article v-else>
       <!-- Cover image with manga panel border -->
-      <div v-if="post.coverImage" class="manga-panel overflow-hidden mb-8" style="border-bottom-width: 3px;">
+      <div v-if="post.coverImage" class="card-panel overflow-hidden mb-8" style="border-bottom-width: 3px;">
         <img
           :src="post.coverImage"
           :alt="post.title"
@@ -86,14 +86,14 @@ onMounted(async () => {
       <PostContent :content="post.content" />
 
       <!-- Prev / Next nav -->
-      <div class="mt-12 pt-8 grid grid-cols-2 gap-4" style="border-top: 3px double var(--ink);">
+      <div class="mt-12 pt-8 grid grid-cols-2 gap-4" style="border-top: 1px solid var(--border);">
         <RouterLink
           v-if="prev"
           :to="`/post/${prev.slug}`"
-          class="no-underline p-4 transition-all group manga-panel"
+          class="no-underline p-4 transition-all group card-panel"
         >
           <span class="text-xs" style="font-family: var(--font-mono); color: var(--text-secondary); font-size: 0.6rem;">&larr; 上一篇</span>
-          <p class="text-sm font-bold mt-1 line-clamp-1 group-hover:text-red-700 transition-colors"
+          <p class="text-sm font-bold mt-1 line-clamp-1 group-hover:text-blue-600 transition-colors"
              style="font-family: var(--font-display); font-weight: 400;">{{ prev.title }}</p>
         </RouterLink>
         <div v-else />
@@ -101,10 +101,10 @@ onMounted(async () => {
         <RouterLink
           v-if="next"
           :to="`/post/${next.slug}`"
-          class="no-underline p-4 text-right transition-all group manga-panel"
+          class="no-underline p-4 text-right transition-all group card-panel"
         >
           <span class="text-xs" style="font-family: var(--font-mono); color: var(--text-secondary); font-size: 0.6rem;">下一篇 &rarr;</span>
-          <p class="text-sm font-bold mt-1 line-clamp-1 group-hover:text-red-700 transition-colors"
+          <p class="text-sm font-bold mt-1 line-clamp-1 group-hover:text-blue-600 transition-colors"
              style="font-family: var(--font-display); font-weight: 400;">{{ next.title }}</p>
         </RouterLink>
       </div>

@@ -40,7 +40,7 @@ onMounted(load)
           <h1 class="text-2xl font-black" style="font-family: var(--font-display)">文章管理</h1>
           <button @click="router.push('/admin/posts/new')"
                   class="px-4 py-2 rounded-lg text-sm font-bold text-white transition-all hover:scale-105"
-                  style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-yellow))">
+                  style="background: var(--accent)">
             + 写文章
           </button>
         </div>

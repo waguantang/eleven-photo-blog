@@ -47,7 +47,7 @@ onMounted(loadComments)
 </script>
 
 <template>
-  <div class="mt-12 pt-8" style="border-top: 3px double var(--ink);">
+  <div class="mt-12 pt-8" style="border-top: 1px solid var(--border);">
     <div class="flex items-center gap-3 mb-8">
       <h3 class="text-xl font-bold" style="font-family: var(--font-display); font-weight: 400;">
         读者留言
@@ -70,7 +70,7 @@ onMounted(loadComments)
     </p>
 
     <!-- Comment form -->
-    <div class="manga-panel mt-8 p-6">
+    <div class="card-panel mt-8 p-6">
       <p class="text-sm font-bold mb-4" style="font-family: var(--font-display); font-weight: 400; color: var(--text-primary);">
         写留言
       </p>

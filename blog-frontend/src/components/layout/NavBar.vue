@@ -32,7 +32,7 @@ const links = [
       <!-- Logo -->
       <RouterLink to="/" class="flex items-center gap-2 no-underline group" style="color: inherit">
         <span class="text-xl font-bold tracking-wide" style="font-family: var(--font-display); font-weight: 400;">
-          Eleven<span style="color: var(--kita-red);">摄影笔记</span>
+          Eleven<span style="color: var(--accent);">摄影笔记</span>
         </span>
         <span class="text-xs px-1.5 py-0.5 border-2 rounded-none opacity-60 group-hover:opacity-100 transition-opacity"
               style="border-color: var(--ink); font-family: var(--font-mono); font-size: 0.55rem;">
@@ -52,7 +52,7 @@ const links = [
           <span
             v-if="route.path === link.to"
             class="absolute bottom-0 left-2 right-2 h-0.5"
-            style="background: var(--kita-red);"
+            style="background: var(--accent);"
           />
           <span :style="route.path === link.to ? 'color: var(--text-primary);' : ''">{{ link.label }}</span>
         </RouterLink>
@@ -87,7 +87,7 @@ const links = [
         class="block px-3 py-2.5 text-sm no-underline transition-colors"
         style="font-family: var(--font-display);"
         :style="route.path === link.to
-          ? 'color: var(--kita-red);'
+          ? 'color: var(--accent);'
           : 'color: var(--text-secondary);'"
         @click="mobileOpen = false"
       >{{ link.label }}</RouterLink>

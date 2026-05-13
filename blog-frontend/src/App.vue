@@ -23,13 +23,15 @@ import MusicPlayer from './components/music/MusicPlayer.vue'
 <style>
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .page-enter-from {
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(12px) scale(0.98);
 }
 .page-leave-to {
   opacity: 0;
+  transform: translateY(-8px);
 }
 </style>

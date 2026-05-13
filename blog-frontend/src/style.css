@@ -1,89 +1,89 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Noto+Sans+SC:wght@300;400;700&family=Noto+Serif+SC:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;700&display=swap');
 
 @theme {
-  --font-display: 'Yusei Magic', cursive;
-  --font-body: 'Noto Serif SC', 'SimSun', serif;
-  --font-sans: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  --font-mono: 'Courier Prime', 'Courier New', monospace;
+  --font-display: 'Archivo', 'Noto Sans SC', sans-serif;
+  --font-body: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  --font-sans: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  --font-mono: 'Space Grotesk', 'Courier New', monospace;
 }
 
 /* ═══════════════════════════════════════════
-   MANGA GARAGE — Light Mode (Manga Paper)
+   MOTION-DRIVEN — Light Mode
    ═══════════════════════════════════════════ */
 :root {
-  --bg-primary: #F9F6F0;
-  --bg-secondary: #F0EBE0;
-  --bg-card: #FEFCF8;
-  --text-primary: #1A1714;
-  --text-secondary: #6B6358;
-  --ink: #1A1714;
-  --ink-light: #8B8378;
-  --border: #33302B;
-  --border-light: #D4CFC5;
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #F4F4F5;
+  --bg-card: #FFFFFF;
+  --text-primary: #18181B;
+  --text-secondary: #71717A;
+  --ink: #18181B;
+  --ink-light: #A1A1AA;
+  --border: #E4E4E7;
+  --border-light: #F4F4F5;
 
-  /* Character accent colors */
-  --bocchi-pink: #E87DA6;
-  --nijika-yellow: #F5C344;
-  --ryo-blue: #5B8DB8;
-  --kita-red: #E85D5D;
+  /* Accent colors */
+  --bocchi-pink: #2563EB;
+  --nijika-yellow: #F59E0B;
+  --ryo-blue: #2563EB;
+  --kita-red: #DC2626;
 
-  --accent: var(--bocchi-pink);
-  --accent-glow: #F0A0C0;
-  --accent-blue: var(--ryo-blue);
-  --accent-gold: var(--nijika-yellow);
+  --accent: #2563EB;
+  --accent-glow: #60A5FA;
+  --accent-blue: #2563EB;
+  --accent-gold: #F59E0B;
 
-  /* Manga effects */
-  --halftone-opacity: 0.04;
-  --speedline-opacity: 0.06;
-  --panel-gap: 3px;
-  --panel-border: 2px solid var(--ink);
+  /* Effects */
+  --halftone-opacity: 0;
+  --speedline-opacity: 0;
+  --panel-gap: 24px;
+  --panel-border: 1px solid var(--border);
 
   /* Backward compat */
-  --accent-pink: #E87DA6;
-  --accent-yellow: #F5C344;
-  --accent-yellow-light: #FFF8E1;
-  --accent-red: #E85D5D;
-  --stamp-ink: #1A1714;
-  --tape: rgba(255,255,200,0.4);
-  --border-color: #33302B;
+  --accent-pink: #2563EB;
+  --accent-yellow: #F59E0B;
+  --accent-yellow-light: #FEF3C7;
+  --accent-red: #DC2626;
+  --stamp-ink: #18181B;
+  --tape: rgba(0,0,0,0.04);
+  --border-color: #E4E4E7;
 }
 
 /* ═══════════════════════════════════════════
-   MANGA GARAGE — Dark Mode (Ink Wash Night)
+   MOTION-DRIVEN — Dark Mode
    ═══════════════════════════════════════════ */
 .dark {
-  --bg-primary: #12100E;
-  --bg-secondary: #1D1A16;
-  --bg-card: #25211C;
-  --text-primary: #E8E2D8;
-  --text-secondary: #9D9488;
-  --ink: #E8E2D8;
-  --ink-light: #6B6054;
-  --border: #3D3830;
-  --border-light: #2D2924;
+  --bg-primary: #09090B;
+  --bg-secondary: #18181B;
+  --bg-card: #27272A;
+  --text-primary: #FAFAFA;
+  --text-secondary: #A1A1AA;
+  --ink: #FAFAFA;
+  --ink-light: #71717A;
+  --border: #3F3F46;
+  --border-light: #27272A;
 
-  --bocchi-pink: #F0A0C0;
-  --nijika-yellow: #F8D878;
-  --ryo-blue: #7BB3D4;
-  --kita-red: #F08080;
+  --bocchi-pink: #3B82F6;
+  --nijika-yellow: #FBBF24;
+  --ryo-blue: #3B82F6;
+  --kita-red: #EF4444;
 
-  --accent: var(--bocchi-pink);
-  --accent-glow: #F0A0C0;
-  --accent-blue: var(--ryo-blue);
-  --accent-gold: var(--nijika-yellow);
+  --accent: #3B82F6;
+  --accent-glow: #3B82F6;
+  --accent-blue: #3B82F6;
+  --accent-gold: #FBBF24;
 
-  --halftone-opacity: 0.06;
-  --speedline-opacity: 0.08;
-  --panel-border: 2px solid var(--border);
+  --halftone-opacity: 0;
+  --speedline-opacity: 0;
+  --panel-border: 1px solid var(--border);
 
-  --accent-pink: #F0A0C0;
-  --accent-yellow: #F8D878;
-  --accent-yellow-light: #2D2820;
-  --accent-red: #F08080;
-  --stamp-ink: #E8E2D8;
-  --tape: rgba(255,255,180,0.08);
-  --border-color: #3D3830;
+  --accent-pink: #3B82F6;
+  --accent-yellow: #FBBF24;
+  --accent-yellow-light: #422006;
+  --accent-red: #EF4444;
+  --stamp-ink: #FAFAFA;
+  --tape: rgba(255,255,255,0.04);
+  --border-color: #3F3F46;
 }
 
 /* ═══════════════════════════════════════════
@@ -96,7 +96,7 @@ body {
   margin: 0;
   font-size: 1.0625rem;
   line-height: 1.85;
-  transition: background-color 0.4s, color 0.4s;
+  transition: background-color 0.2s, color 0.2s;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -122,237 +122,131 @@ body::after {
 ::-webkit-scrollbar-track { background: var(--bg-secondary); }
 ::-webkit-scrollbar-thumb {
   background: var(--ink-light);
-  border-radius: 0;
+  border-radius: 4px;
 }
 
 /* ═══════════════════════════════════════════
    SELECTION — Manga highlight
    ═══════════════════════════════════════════ */
 ::selection {
-  background: color-mix(in srgb, var(--accent) 25%, transparent);
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
   color: var(--text-primary);
 }
 
 /* ═══════════════════════════════════════════
-   STAMP — Red ink seal
+   ACCENT BADGE — Clean pill
    ═══════════════════════════════════════════ */
-.stamp {
+.accent-badge {
   display: inline-block;
   padding: 0.2em 0.7em;
-  border: 2px solid var(--stamp-ink);
-  color: var(--stamp-ink);
+  border: 1px solid var(--accent);
+  color: var(--accent);
   font-family: var(--font-display);
   font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  transform: rotate(-2deg);
-  text-transform: uppercase;
-  position: relative;
-  user-select: none;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  font-weight: 600;
 }
 
 /* ═══════════════════════════════════════════
-   MANGA PANEL — Posts & cards
+   CARD PANEL — Clean white card
    ═══════════════════════════════════════════ */
-.manga-panel {
+.card-panel {
   position: relative;
   background: var(--bg-card);
-  border: var(--panel-border);
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.manga-panel:hover {
+.card-panel:hover {
   transform: translateY(-2px);
-  box-shadow: 6px 6px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 /* ═══════════════════════════════════════════
-   SPEECH BUBBLE — Comments
+   COMMENT CARD — Clean rounded card
    ═══════════════════════════════════════════ */
-.speech-bubble {
+.comment-card {
   position: relative;
   background: var(--bg-card);
-  border: 2px solid var(--ink);
-  border-radius: 18px 18px 18px 4px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
   padding: 1rem 1.25rem;
 }
-.speech-bubble::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: -12px;
-  width: 14px;
-  height: 14px;
-  background: var(--bg-card);
-  border-left: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  clip-path: polygon(100% 0, 0 100%, 100% 100%);
-}
 
 /* ═══════════════════════════════════════════
-   SCREAM BUBBLE — Jagged manga shout
+   CTA CARD — Call-to-action panel
    ═══════════════════════════════════════════ */
-.scream-bubble {
+.cta-card {
   position: relative;
   background: var(--bg-card);
-  border: 2px solid var(--ink);
-  padding: 1rem 1.25rem;
-  clip-path: polygon(
-    0% 8%, 3% 0%, 12% 6%, 22% 0%, 28% 8%,
-    38% 2%, 44% 10%, 56% 4%, 62% 12%,
-    72% 5%, 78% 12%, 88% 4%, 95% 10%,
-    100% 5%, 100% 92%, 97% 100%, 88% 94%,
-    78% 100%, 72% 92%, 62% 100%, 56% 90%,
-    44% 98%, 38% 88%, 28% 100%, 22% 92%,
-    12% 98%, 3% 90%, 0% 100%
-  );
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
 }
 
 /* ═══════════════════════════════════════════
-   SPEED LINES — Action dividers
+   SECTION DIVIDER — Clean horizontal rule
    ═══════════════════════════════════════════ */
-.speed-lines {
-  position: relative;
-  height: 40px;
-  overflow: hidden;
-  opacity: var(--speedline-opacity);
+.section-divider {
+  height: 32px;
+  display: flex;
+  align-items: center;
 }
-.speed-lines::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    105deg,
-    transparent,
-    transparent 2px,
-    var(--ink) 2px,
-    var(--ink) 3px,
-    transparent 3px,
-    transparent 6px
-  );
-}
-
-/* ═══════════════════════════════════════════
-   INK BRUSH STROKE — Decorative
-   ═══════════════════════════════════════════ */
-.ink-stroke {
-  position: relative;
-}
-.ink-stroke::after {
+.section-divider::after {
   content: '';
   display: block;
   width: 100%;
-  height: 4px;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ═══════════════════════════════════════════
+   HEADING UNDERLINE — Accent underline for headings
+   ═══════════════════════════════════════════ */
+.heading-underline {
+  position: relative;
+}
+.heading-underline::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
   margin-top: 0.5rem;
-  background: var(--ink);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  background: var(--accent);
 }
 
 /* ═══════════════════════════════════════════
-   ACTION LINES BG — Radiating focus lines
+   HERO PATTERN — Subtle geometric dot grid
    ═══════════════════════════════════════════ */
-.action-lines-bg {
-  background-image:
-    conic-gradient(
-      from 0deg at 50% 40%,
-      transparent 0deg,
-      transparent 2deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 2deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 3deg,
-      transparent 3deg,
-      transparent 5deg,
-      transparent 10deg,
-      transparent 12deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 12deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 13deg,
-      transparent 13deg,
-      transparent 15deg,
-      transparent 30deg,
-      transparent 32deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 32deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 33deg,
-      transparent 33deg,
-      transparent 35deg,
-      transparent 50deg,
-      transparent 52deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 52deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 53deg,
-      transparent 53deg,
-      transparent 55deg,
-      transparent 90deg,
-      transparent 92deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 92deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 93deg,
-      transparent 93deg,
-      transparent 95deg,
-      transparent 120deg,
-      transparent 122deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 122deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 123deg,
-      transparent 123deg,
-      transparent 125deg,
-      transparent 150deg,
-      transparent 152deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 152deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 153deg,
-      transparent 153deg,
-      transparent 155deg,
-      transparent 210deg,
-      transparent 212deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 212deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 213deg,
-      transparent 213deg,
-      transparent 215deg,
-      transparent 240deg,
-      transparent 242deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 242deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 243deg,
-      transparent 243deg,
-      transparent 245deg,
-      transparent 270deg,
-      transparent 272deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 272deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 273deg,
-      transparent 273deg,
-      transparent 275deg,
-      transparent 300deg,
-      transparent 302deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 302deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 303deg,
-      transparent 303deg,
-      transparent 305deg,
-      transparent 330deg,
-      transparent 332deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 332deg,
-      color-mix(in srgb, var(--ink) 5%, transparent) 333deg,
-      transparent 333deg,
-      transparent 335deg,
-      transparent 360deg
-    );
+.hero-pattern {
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* ═══════════════════════════════════════════
-   MANGA PANEL GRID — Gutters between panels
+   POST GRID — Standard card grid
    ═══════════════════════════════════════════ */
-.manga-grid {
+.post-grid {
   display: grid;
-  gap: 3px;
-  background: var(--ink);
-  border: 2px solid var(--ink);
-  padding: 0;
+  gap: 24px;
 }
 
 /* ═══════════════════════════════════════════
-   CHARACTER TAG — Colored accent label
+   FILTER TAG — Rounded pill tag
    ═══════════════════════════════════════════ */
-.char-tag {
+.filter-tag {
   display: inline-block;
-  padding: 0.15em 0.6em;
+  padding: 0.2em 0.7em;
   font-family: var(--font-display);
   font-size: 0.7rem;
-  letter-spacing: 0.04em;
-  border: 2px solid var(--ink);
+  letter-spacing: 0.02em;
+  border: 1px solid var(--border);
+  border-radius: 999px;
   background: var(--bg-card);
+  color: var(--text-secondary);
 }
 
 /* ═══════════════════════════════════════════
@@ -361,167 +255,166 @@ body::after {
 .hero-overlay {
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.15) 0%,
-    rgba(0,0,0,0.4) 50%,
-    rgba(0,0,0,0.85) 100%
+    rgba(0,0,0,0.05) 0%,
+    rgba(0,0,0,0.3) 50%,
+    rgba(0,0,0,0.75) 100%
   );
 }
 
 /* ═══════════════════════════════════════════
-   SFX TEXT — Manga sound effect style
+   ARTICLE PROSE — Clean article typography
    ═══════════════════════════════════════════ */
-.sfx-text {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.15);
-  writing-mode: vertical-rl;
-}
-
-/* ═══════════════════════════════════════════
-   FOCUS LINES — Converging lines for emphasis
-   ═══════════════════════════════════════════ */
-.focus-lines {
-  position: relative;
-}
-.focus-lines::before {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  background: repeating-conic-gradient(
-    from 0deg at 50% 50%,
-    transparent 0deg,
-    transparent 3deg,
-    color-mix(in srgb, var(--ink) 8%, transparent) 3deg,
-    color-mix(in srgb, var(--ink) 8%, transparent) 4deg,
-    transparent 4deg,
-    transparent 8deg
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ═══════════════════════════════════════════
-   PROSE — Markdown article content
-   ═══════════════════════════════════════════ */
-.bocchi-prose h2 {
+.article-prose h2 {
   font-family: var(--font-display);
   font-size: 1.75rem;
-  font-weight: 400;
-  border-bottom: 3px double var(--ink);
+  font-weight: 600;
+  border-bottom: 1px solid var(--accent);
   padding-bottom: 0.5rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  letter-spacing: 0.02em;
 }
-.bocchi-prose h3 {
+.article-prose h3 {
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 400;
+  font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
-  color: var(--ryo-blue);
+  color: var(--text-primary);
 }
-.bocchi-prose blockquote {
-  border-left: none;
+.article-prose blockquote {
+  border-left: 3px solid var(--accent);
   background: var(--bg-secondary);
   padding: 0.75rem 1.25rem;
   margin: 1.5rem 0;
-  font-style: italic;
-  position: relative;
-  border: 2px solid var(--border-light);
+  border-radius: 0 6px 6px 0;
 }
-.bocchi-prose blockquote::before {
-  content: '\201C';
-  position: absolute;
-  left: 0.3rem;
-  top: -0.6rem;
-  font-size: 3rem;
-  font-family: var(--font-display);
-  color: var(--accent);
-  opacity: 0.4;
-}
-.bocchi-prose a {
-  color: var(--ryo-blue);
+.article-prose a {
+  color: var(--accent-blue);
   text-decoration: underline;
-  text-decoration-style: solid;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
 }
-.bocchi-prose code {
+.article-prose code {
   background: var(--bg-secondary);
-  color: var(--kita-red);
-  padding: 0.1em 0.4em;
-  border-radius: 2px;
+  color: var(--accent-red);
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
   font-size: 0.875rem;
   font-family: var(--font-mono);
 }
-.bocchi-prose pre {
+.article-prose pre {
   background: var(--bg-secondary);
   color: var(--text-primary);
   padding: 1rem 1.25rem;
   overflow-x: auto;
-  border: 2px solid var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
   font-family: var(--font-mono);
   font-size: 0.85rem;
   line-height: 1.6;
 }
-.bocchi-prose img {
+.article-prose img {
   width: 100%;
-  border: 3px solid var(--ink);
+  border-radius: 8px;
 }
-.bocchi-prose table {
+.article-prose table {
   width: 100%;
   border-collapse: collapse;
-  border: 2px solid var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
 }
-.bocchi-prose th {
+.article-prose th {
   background: var(--bg-secondary);
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   padding: 0.5rem 0.75rem;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--border);
   text-align: left;
+  font-size: 0.85rem;
 }
-.bocchi-prose td {
+.article-prose td {
   padding: 0.4rem 0.75rem;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--border);
 }
 
 /* ═══════════════════════════════════════════
-   ANIMATIONS
+   MOTION-DRIVEN — Keyframes
    ═══════════════════════════════════════════ */
-@keyframes panel-appear {
-  0%   { transform: translateY(12px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-@keyframes stamp-down {
-  0%   { transform: scale(1.8); opacity: 0; }
-  60%  { transform: scale(0.95); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
-
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-6px); }
 }
-
-@keyframes speed-lines-scroll {
-  0%   { background-position: 0 0; }
-  100% { background-position: 20px 0; }
-}
-
 @keyframes text-reveal {
   0%   { clip-path: inset(0 100% 0 0); }
   100% { clip-path: inset(0 0 0 0); }
 }
 
-@keyframes glow-pulse {
-  0%, 100% { filter: drop-shadow(0 0 4px var(--accent-glow)); }
-  50%      { filter: drop-shadow(0 0 12px var(--accent-glow)); }
+/* ── Motion utility classes ── */
+.motion-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.motion-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .panel-animate {
-  animation: panel-appear 0.5s ease-out both;
+  animation: fade-up 0.5s ease-out both;
+}
+
+/* ── Parallax layers ── */
+.parallax-slow   { will-change: transform; }
+.parallax-medium { will-change: transform; }
+.parallax-fast   { will-change: transform; }
+
+/* ── Article prose scroll animations ── */
+@supports (animation-timeline: view()) {
+  .article-prose img {
+    animation: fade-up 0.6s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
+  }
+  .article-prose blockquote {
+    animation: slide-in-left 0.5s ease-out both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 25%;
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .motion-item,
+  .motion-item.is-visible {
+    opacity: 1;
+    transform: none;
+  }
 }

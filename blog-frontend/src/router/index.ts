@@ -69,6 +69,24 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },
     {
+      path: '/admin/photos',
+      name: 'admin-photos',
+      component: () => import('../views/admin/AdminPhotos.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/admin/tracks',
+      name: 'admin-tracks',
+      component: () => import('../views/admin/AdminTracks.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/admin/config',
+      name: 'admin-config',
+      component: () => import('../views/admin/AdminConfig.vue'),
+      meta: { requiresAuth: true },
+    },
+    {
       path: '/admin/comments',
       name: 'admin-comments',
       component: () => import('../views/admin/AdminComments.vue'),
@@ -94,7 +112,7 @@ const router = createRouter({
   ],
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   if (to.meta.requiresAuth) {
     const authStore = useAuthStore()
     if (!authStore.isLoggedIn) {

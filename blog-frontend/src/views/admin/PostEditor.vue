@@ -133,7 +133,7 @@ function toggleTag(id: number) {
           <div class="flex gap-3">
             <button @click="save" :disabled="saving"
                     class="px-6 py-2.5 rounded-lg text-sm font-bold text-white transition-all hover:scale-105 disabled:opacity-50"
-                    style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-yellow))">
+                    style="background: var(--accent)">
               {{ saving ? '保存中...' : (status === 'published' ? '发布！🎸' : '保存草稿') }}
             </button>
             <button @click="router.back()"

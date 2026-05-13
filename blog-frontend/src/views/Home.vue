@@ -174,24 +174,24 @@ const topics = [
            style="background: repeating-linear-gradient(100deg, transparent, transparent 3px, rgba(255,255,255,0.15) 3px, rgba(255,255,255,0.15) 4px, transparent 4px, transparent 8px);" />
 
       <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-        <div class="mb-4 animate-[stamp-down_0.6s_ease-out]">
+        <div class="mb-4" v-motion>
           <span class="text-white/70 text-xs tracking-[0.3em] uppercase"
                 style="font-family: var(--font-mono); font-size: 0.6rem; border: 1px solid rgba(255,255,255,0.3); padding: 4px 16px; letter-spacing: 0.25em;">
             探索光影 · 记录生活
           </span>
         </div>
 
-        <h1 class="text-6xl md:text-8xl font-bold mb-4 tracking-wide text-white"
-            style="font-family: var(--font-display); font-weight: 400; text-shadow: 3px 3px 0 rgba(0,0,0,0.5); animation: text-reveal 0.8s ease-out both;">
+        <h1 v-motion class="text-6xl md:text-8xl font-bold mb-4 tracking-wide text-white"
+            style="font-family: var(--font-display); font-weight: 400; text-shadow: 3px 3px 0 rgba(0,0,0,0.5);">
           Eleven的摄影笔记
         </h1>
 
-        <p class="text-white/80 text-lg md:text-xl mb-8 max-w-lg leading-relaxed"
-           style="font-family: var(--font-sans); font-weight: 300; animation: text-reveal 0.8s 0.2s ease-out both;">
+        <p v-motion class="text-white/80 text-lg md:text-xl mb-8 max-w-lg leading-relaxed"
+           style="font-family: var(--font-sans); font-weight: 300;">
           用光影写故事，用构图说心情 —— 这里记录我的摄影学习与心得
         </p>
 
-        <div class="flex gap-4 flex-wrap justify-center" style="animation: panel-appear 0.6s 0.4s ease-out both;">
+        <div v-motion class="flex gap-4 flex-wrap justify-center">
           <a href="#topics"
              class="px-8 py-3 text-white font-bold no-underline transition-all hover:scale-105"
              style="font-family: var(--font-display); font-weight: 400; border: 2px solid rgba(255,255,255,0.8); background: rgba(255,255,255,0.1); font-size: 0.95rem; backdrop-filter: blur(4px);">
@@ -199,7 +199,7 @@ const topics = [
           </a>
           <a href="#articles"
              class="px-8 py-3 font-bold no-underline transition-all hover:scale-105"
-             style="font-family: var(--font-display); font-weight: 400; border: 2px solid var(--bocchi-pink); background: var(--bocchi-pink); color: #fff; font-size: 0.95rem;">
+             style="font-family: var(--font-display); font-weight: 400; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-size: 0.95rem;">
             阅读文章
           </a>
         </div>
@@ -214,14 +214,14 @@ const topics = [
     <!-- ═══════════════════════════════════════
          SPEED LINES DIVIDER
          ═══════════════════════════════════════ -->
-    <div class="speed-lines" style="height: 32px;" />
+    <div class="section-divider" style="height: 32px;" />
 
     <!-- ═══════════════════════════════════════
          摄影主题卡片
          ═══════════════════════════════════════ -->
     <section id="topics" class="max-w-6xl mx-auto px-4 py-16">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-3 ink-stroke"
+        <h2 class="text-3xl md:text-4xl font-bold mb-3 heading-underline"
             style="font-family: var(--font-display); font-weight: 400;">
           摄影四大要素
         </h2>
@@ -232,9 +232,9 @@ const topics = [
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div
-          v-for="(t, i) in topics" :key="t.name"
-          class="manga-panel p-6 overflow-hidden panel-animate text-center"
-          :style="{ animationDelay: `${i * 0.1}s` }"
+          v-for="t in topics" :key="t.name"
+          v-motion
+          class="card-panel p-6 overflow-hidden text-center"
         >
           <div class="text-4xl mb-3" style="color: v-bind('t.color');">{{ t.icon }}</div>
           <h3 class="text-lg font-bold mb-2" style="font-family: var(--font-display); font-weight: 400;">{{ t.name }}</h3>
@@ -247,7 +247,7 @@ const topics = [
       </div>
     </section>
 
-    <div class="speed-lines" style="height: 32px;" />
+    <div class="section-divider" style="height: 32px;" />
 
     <!-- ═══════════════════════════════════════
          精选文章 / FEATURED
@@ -267,9 +267,8 @@ const topics = [
           v-for="cat in derivedCategories" :key="cat.id"
           :to="`/category/${cat.slug}`"
           class="no-underline transition-all hover:scale-105"
-          style="transform: rotate(-1.5deg);"
         >
-          <span class="char-tag">{{ cat.name }}</span>
+          <span class="filter-tag">{{ cat.name }}</span>
         </RouterLink>
       </div>
 
@@ -289,12 +288,11 @@ const topics = [
         </p>
       </div>
 
-      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[3px] manga-grid">
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[3px] post-grid">
         <div
           v-for="(post, i) in derivedPosts.slice(0, useDemo ? 6 : derivedPosts.length)" :key="post.id || i"
-          class="panel-animate"
+          v-motion
           :style="{
-            animationDelay: `${i * 0.08}s`,
             background: 'var(--bg-card)',
           }"
         >
@@ -309,7 +307,7 @@ const topics = [
            ═══════════════════════════════════ -->
       <div class="mt-20">
         <div class="text-center mb-10">
-          <h2 class="text-3xl md:text-4xl font-bold mb-3 ink-stroke"
+          <h2 class="text-3xl md:text-4xl font-bold mb-3 heading-underline"
               style="font-family: var(--font-display); font-weight: 400;">
             读者留言
           </h2>
@@ -321,8 +319,8 @@ const topics = [
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
           <div
             v-for="(cmt, i) in demoComments" :key="i"
-            class="speech-bubble panel-animate"
-            :style="{ animationDelay: `${i * 0.1}s` }"
+            v-motion
+            class="comment-card"
           >
             <div class="flex items-center gap-2 mb-2">
               <div class="w-7 h-7 flex items-center justify-center text-xs font-bold text-white"
@@ -344,7 +342,7 @@ const topics = [
         </div>
 
         <!-- CTA -->
-        <div class="max-w-md mx-auto mt-8 scream-bubble text-center panel-animate" style="animation-delay: 0.6s;">
+        <div class="max-w-md mx-auto mt-8 cta-card text-center" v-motion>
           <p class="font-bold mb-3" style="font-family: var(--font-display); font-weight: 400; font-size: 1.1rem;">
             分享你的摄影心得！
           </p>
@@ -352,7 +350,7 @@ const topics = [
             任何关于摄影的问题、心得、作品，都欢迎在这里交流。
           </p>
           <RouterLink to="/" class="inline-block px-6 py-2 text-sm font-bold text-white no-underline transition-all hover:scale-105"
-               style="font-family: var(--font-display); font-weight: 400; background: var(--kita-red); border: none;">
+               style="font-family: var(--font-display); font-weight: 400; background: var(--accent); border: none;">
             写留言
           </RouterLink>
         </div>
@@ -363,7 +361,7 @@ const topics = [
          BOTTOM — 博客信息
          ═══════════════════════════════════════ -->
     <div class="max-w-6xl mx-auto px-4 pb-8">
-      <div class="pt-8 text-center" style="border-top: 3px double var(--ink);">
+      <div class="pt-8 text-center" style="border-top: 1px solid var(--border);">
         <p class="text-xs opacity-30" style="font-family: var(--font-mono); font-size: 0.55rem;">
           PHOTOGRAPHY BLOG &bull; ISSUE #01 &bull; 光影之间，记录美好
         </p>

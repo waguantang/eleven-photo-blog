@@ -5,11 +5,11 @@ defineProps<{ comment: Comment }>()
 </script>
 
 <template>
-  <div class="speech-bubble">
+  <div class="comment-card">
     <div class="flex items-start gap-3">
       <!-- Avatar — manga style initials -->
       <div class="w-9 h-9 flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
-           style="font-family: var(--font-display); background: var(--ryo-blue); font-size: 0.75rem; border: 2px solid var(--ink);">
+           style="font-family: var(--font-display); background: var(--accent); font-size: 0.75rem;">
         {{ comment.authorName.charAt(0) }}
       </div>
 
@@ -30,7 +30,7 @@ defineProps<{ comment: Comment }>()
 
     <!-- Replies — nested with left border accent -->
     <div v-if="comment.replies?.length" class="mt-3 pt-3 space-y-3" style="border-top: 1px dashed var(--border-light);">
-      <div class="ml-8 pl-4" style="border-left: 2px solid var(--nijika-yellow);">
+      <div class="ml-8 pl-4" style="border-left: 2px solid var(--accent-blue);">
         <CommentItem v-for="reply in comment.replies" :key="reply.id" :comment="reply" />
       </div>
     </div>
